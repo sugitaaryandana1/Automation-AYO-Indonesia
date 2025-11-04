@@ -84,7 +84,7 @@ function runAutomationTest() {
 
   // Test result
   if (doubleBookingFound) {
-    testReport.push("Test Result: ✗ FAILED");
+    testReport.push("Test Result: FAILED");
     testReport.push("Reason: Double booking detected");
     testReport.push("");
     testReport.push("Bug Details:");
@@ -108,7 +108,7 @@ function runAutomationTest() {
     }
     failedTests++;
   } else {
-    testReport.push("Test Result: ✓ PASSED");
+    testReport.push("Test Result: PASSED");
     testReport.push("No double booking found");
     passedTests++;
   }
@@ -179,7 +179,7 @@ function runAutomationTest() {
 
   // Test result
   if (invalidPriceFound) {
-    testReport.push("Test Result: ✗ FAILED");
+    testReport.push("Test Result:  FAILED");
     testReport.push("Reason: Invalid price detected");
     testReport.push("");
     testReport.push("Bug Details:");
@@ -201,7 +201,7 @@ function runAutomationTest() {
     }
     failedTests++;
   } else {
-    testReport.push("Test Result: ✓ PASSED");
+    testReport.push("Test Result: PASSED");
     testReport.push("All prices are valid");
     passedTests++;
   }
@@ -227,10 +227,10 @@ function runAutomationTest() {
   testReport.push("");
 
   if (failedTests > 0) {
-    testReport.push("⚠️  OVERALL STATUS: FAILED");
+    testReport.push("OVERALL STATUS: FAILED");
     testReport.push("Action Required: Fix bugs and retest");
   } else {
-    testReport.push("✓ OVERALL STATUS: PASSED");
+    testReport.push("OVERALL STATUS: PASSED");
     testReport.push("All test cases passed successfully");
   }
 
@@ -271,8 +271,8 @@ function runAutomationTest() {
   reportSheet.getRange(1, 1, lastRow, 1).setFontSize(10);
   reportSheet.getRange(1, 1, lastRow, 1).setWrap(false);
 
-  Logger.log("\n✅ Test execution completed!");
-  Logger.log("📄 Report saved to 'Test Report' sheet");
+  Logger.log("\n Test execution completed!");
+  Logger.log("Report saved to 'Test Report' sheet");
 }
 
 // Helper functions
