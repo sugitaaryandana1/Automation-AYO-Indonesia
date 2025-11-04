@@ -1,0 +1,41 @@
+Pengujian Aplikasi AYO
+
+1. Fitur Chat (Direct, Komunitas, Aktivitas)
+   - Pengujian: 
+     - Penerimaan & pengiriman pesan (direct, komunitas, aktivitas)
+     - Notifikasi pesan masuk dan empty chat state
+     - Fungsi pencarian user di chat
+   - Mekanisme:
+     - Manual exploratory (UI, fungsi search, simulasi pesan masuk)
+     - Pengujian backend integrasi (apakah data chat sinkron)
+     - Negative test (akun baru, empty state)
+
+2. Explore/Filter Venue
+   - Pengujian:
+     - Pengisian filter: activities, location, sports category, date, time
+     - Kombinasi pencarian dan hasil
+     - Validasi data input (format, wajib isi/tidak)
+   - Mekanisme:
+     - Manual & UI automation (input semua kombinasi, antisalah format)
+     - Verifikasi hasil filter menggunakan data dummy
+     - Regression setelah update menu/filter
+
+3. Dashboard Menu (Sparring, Open Play, etc)
+   - Pengujian:
+     - Semua tombol/menu menuju halaman benar
+     - Status fitur (aktif/beta/hanya role tertentu)
+     - Saldo, notifikasi, hak akses berdasarkan role user (user/member/pemilik)
+   - Mekanisme:
+     - Manual (navigasi satu persatu menu, cek halaman, role-switching)
+     - UI regression test setiap rilis baru
+     - Backend API response (khusus saldo)
+
+4. Home/Explore Main Page
+   - Pengujian:
+     - Navigasi utama (Venue Booking, Open Play, Sparring, Community, Competition)
+     - Banner event, leaderboard, filter lokasi & search user
+     - Kesesuaian tampilan (mobile responsive, data dinamis)
+   - Mekanisme:
+     - Exploratory manual (tapping semua fitur, verifikasi tautan)
+     - Automation sederhana untuk regression pada perubahan UI/event
+     - Load test pada leaderboard/promo/event (opsional)

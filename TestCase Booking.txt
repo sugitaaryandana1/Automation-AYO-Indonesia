@@ -1,0 +1,107 @@
+Test Scenario 1: Validasi Harga Booking Sesuai Jadwal
+Tujuan: Memastikan harga booking yang tercatat di tabel booking sesuai dengan harga pada tabel jadwal, berdasarkan tanggal, jam, dan venue.
+
+Steps:
+1. Lakukan booking venue pada tanggal, jam, dan venue tertentu.
+2. Setelah booking berhasil, cek harga pada tabel booking.
+3. Bandingkan harga yang tercatat di tabel booking dengan harga acuan dari tabel jadwal (matching berdasarkan venue_id, date, start_time, end_time).
+
+Data Uji:
+- venue_id: 15
+- date: 2022-12-10
+- start_time: 09:00:00
+- end_time: 11:00:00
+- expected_price: 1.000.000 (dari tabel jadwal)
+
+Expected Result:
+- Harga yang tersimpan di tabel booking sama persis dengan harga pada tabel jadwal untuk periode tersebut.
+
+Negative Test:
+- Simulasikan jika harga booking tidak sesuai, sistem harus memunculkan error atau tidak menyimpan booking.
+
+
+Test Scenario 2: Validasi Tidak Terjadi Double Booking
+Tujuan: Memastikan tidak terjadi dua booking untuk venue, tanggal, dan jam yang sama.
+
+Steps:
+1. Lakukan booking venue dengan parameter venue_id, date, start_time, end_time tertentu.
+2. Ulangi melakukan booking untuk venue, tanggal, dan jam yang sama.
+3. Periksa apakah sistem mengizinkan booking kedua.
+
+Data Uji:
+- Booking pertama:
+  venue_id: 15
+  date: 2022-12-10
+  start_time: 09:00:00
+  end_time: 11:00:00
+
+- Booking kedua (duplicate):
+  venue_id: 15
+  date: 2022-12-10
+  start_time: 09:00:00
+  end_time: 11:00:00
+
+Expected Result:
+- Sistem menolak booking kedua untuk slot yang waktu dan venue-nya sudah di-booking.
+- Tidak ada dua data booking aktif untuk slot yang sama di database.
+- Muncul error message: "Slot sudah terisi/dibooking oleh user lain."
+
+
+Test Scenario 3: Integrasi Validasi Harga & Slot
+Tujuan: Sistem hanya mengizinkan booking jika slot masih kosong dan harga sesuai jadwal.
+
+Steps:
+1. Input booking dengan kombinasi data acak pada slot yang sudah terisi/overlap.
+2. Input booking dengan harga yang dimanipulasi.
+3. Simpan dan cek database booking.
+
+Data Uji Test 1 (Slot Overlap):
+- venue_id: 15
+- date: 2022-12-10
+- start_time: 10:00:00
+- end_time: 12:00:00
+- (Sementara slot 09:00-11:00 sudah terisi)
+
+Data Uji Test 2 (Harga Salah):
+- venue_id: 15
+- date: 2022-12-10
+- start_time: 11:00:00
+- end_time: 13:00:00
+- price: 1.500.000 (harusnya 1.000.000)
+
+Expected Result:
+- Sistem menolak booking pada slot yang bentrok atau harga yang tidak sesuai acuan.
+- Pesan error tampil ke user: "Slot tidak tersedia" atau "Harga tidak sesuai jadwal."
+
+
+Test Scenario 4: Validasi Booking pada Batas Waktu Slot
+Tujuan: Memastikan sistem hanya menerima booking yang tidak overlap, termasuk pada kasus batas waktu slot (edge case).
+
+Steps:
+1. Lakukan booking slot pertama dengan waktu tertentu.
+2. Lakukan booking slot kedua yang tepat dimulai saat slot pertama berakhir.
+3. Coba lakukan booking slot ketiga yang overlap dengan salah satu slot sebelumnya.
+
+Data Uji:
+- Booking A:
+  venue_id: 15
+  date: 2022-12-10
+  start_time: 09:00:00
+  end_time: 11:00:00
+
+- Booking B (tepat setelah A):
+  venue_id: 15
+  date: 2022-12-10
+  start_time: 11:00:00
+  end_time: 13:00:00
+
+- Booking C (overlap dengan A dan B):
+  venue_id: 15
+  date: 2022-12-10
+  start_time: 10:00:00
+  end_time: 12:00:00
+
+Expected Result:
+- Booking A dan B diterima karena tidak overlap (end_time A = start_time B).
+- Booking C ditolak karena overlap dengan A dan B.
+- Error message: "Waktu booking bertabrakan dengan booking lain."

@@ -1,0 +1,31 @@
+Pengujian Website ayo.co.id
+
+1. Fitur Pencarian dan Pemesanan Lapangan
+   - Pengujian fungsionalitas pencarian lapangan berdasarkan lokasi, jenis olahraga, dan waktu.
+   - Pengujian alur pemesanan lapangan yang mencakup pemilihan lapangan, tanggal, waktu, dan konfirmasi pembayaran.
+   - Mekanisme pengujian: Manual dan otomatisasi fungsional, termasuk pengujian UI dan integrasi backend.
+
+2. Manajemen Pengguna
+   - Pengujian pendaftaran dan login pengguna.
+   - Pengujian pengelolaan akun, termasuk pemesanan aktif dan histori.
+   - Mekanisme pengujian: Fungsional, keamanan (authentikasi dan otorisasi).
+
+3. Sistem Pembayaran
+   - Pengujian alur pembayaran dan validasi transaksi.
+   - Pengujian skenario pembayaran sukses, gagal, dan refund.
+   - Mekanisme pengujian: Uji transaksi backend, pengujian integrasi API pembayaran.
+
+4. Fitur Komunitas dan Event
+   - Pengujian navigasi dan interaksi untuk fitur kompetisi, sparring, dan komunitas.
+   - Mekanisme pengujian: Fungsional dan UI, pengujian load performa jika memungkinkan.
+
+5. Pengelolaan Venue untuk Pemilik
+   - Pengujian fitur upload dan manajemen jadwal lapangan.
+   - Pengujian notifikasi dan update data lapangan.
+   - Mekanisme pengujian: Fungsional, integrasi API, UI.
+
+6. Keamanan dan Privasi
+   - Pengujian terhadap aspek keamanan data pengguna dan transaksi.
+   - Pengujian validasi input dan sanitasi data.
+   - Mekanisme pengujian: Security testing, automated vulnerability scans.
+
